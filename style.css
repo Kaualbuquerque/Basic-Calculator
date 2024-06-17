@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 body{
     margin: 0;
     padding: 0;
@@ -8,12 +11,14 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-family: "Roboto";
+
+    background-color: #0e0b14de;
 }
 
 .calculator-body{
     background-color: #525252;
-
-    padding: 1%;
 
     width: 30%;
     height: calc(100vh/1.5);
@@ -25,31 +30,40 @@ body{
 
     gap: 12.5%;
 
-    border-radius: 5%;
+    border-radius: 25px;
+
+    box-shadow: 0px 1px 5px 1px #00000067;
 }
 
 .calculator-screen{
-    background-color: #8f8f8f;
     width: 90%;
     height: 30%;
-
-    border-radius: 10px;
 }
 
 .calculator-keyboard{
-    width: 60%;
-    height: 50%;
+    background-color: #363636;
+
+    width: 100%;
+    height: 60%;
+
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border-radius: 35px 35px 25px 25px;
+
+    box-shadow: 0px -5px 10px -5px #95ff6449;
 }
 
 .calculator-keyboard .keyboard{
 
     margin: 0;
     padding: 0;
-    color: #fff;
+    color: #c1ff6f;
+
+    width: 90%;
+    height: auto;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -61,22 +75,41 @@ body{
 }
 
 .calculator-keyboard .keyboard .key{
-    background-color: #3a3a3a;
+    background-color: #2b2b2b;
     
     display: flex;
     align-items: center;
     justify-content: center;
     
-    border-radius: 5px;
-    padding: 1vw;
+    border-radius: 10px;
+    padding: 15%;
 
     font-size: 1.5rem;
     font-weight: bold;
 
     cursor: pointer;
+
+    box-shadow: 0px 1px 5px #00000044;
 }
 
 .calculator-keyboard .keyboard .key:hover{
-    background-color: #272727;
+    background-color: #252525;
 }
 
+.calculator-body .keyboard .alt-key{
+    background-color: #7c7c7c;
+}
+
+.calculator-body .keyboard .alt-key:hover{
+    background-color: #414141;
+}
+
+.calculator-body .keyboard .equal{
+    background-color: #63aa42;
+    color: #0f0f0f;
+}
+
+.calculator-body .keyboard .equal:hover{
+    background-color: #396326;
+    color: #c1ff6f;
+}

@@ -18,7 +18,8 @@ body {
 
     user-select: none;
 }
-main{
+
+main {
     width: 100%;
 
     display: flex;
@@ -44,11 +45,14 @@ main{
     border-radius: 25px;
 
     box-shadow: 0px 3px 5px -1px #00000067;
+    z-index: 2;
+
+    transition: 0.5s;
 }
 
 /* Calculator Values */
 
-.calculator-values{
+.calculator-values {
     color: #bbe487;
 
     width: 90%;
@@ -76,7 +80,7 @@ main{
     overflow-y: hidden;
 
     scrollbar-width: thin;
-    scrollbar-color: #b3ec68cb  transparent;
+    scrollbar-color: #b3ec68cb transparent;
 }
 
 /* Calculator Keyboard */
@@ -154,4 +158,65 @@ main{
 .calculator-body .keyboard .equal:hover {
     background-color: #72b121;
     color: #c1ff6f;
+}
+
+/* Calculator history */
+.history-container {
+    background-color: #424242;
+    color: #e0e0e0;
+
+    position: absolute;
+    top: 20;
+    left: 900px;
+
+    width: 10%; /* Largura do histórico */
+    height: calc(100vh / 1.4); /* Mesma altura que a calculadora */
+
+    border-radius: 0px 25px 25px 0px; /* Adicionando bordas arredondadas */
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    overflow-y: scroll; /* Adiciona scroll vertical */
+    scrollbar-width: thin; /* Espessura da barra de rolagem */
+    scrollbar-color: #b3ec68cb transparent; /* Cor da barra de rolagem */
+    
+    padding-left: 30px; /* Espaçamento interno à esquerda */
+    margin-left: -1%; /* Ajuste para posicionar mais à esquerda */
+
+    z-index: 1; /* Garante que fique sobre a calculadora */
+
+    transition: 0.5s;
+}
+
+.history {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.history li {
+    margin-bottom: 10px; /* Espaçamento entre os itens da lista */
+}
+
+/* Estilos para o botão de toggle */
+.toggle-history {
+    background-color: #252525;
+
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    cursor: pointer;
+
+    z-index: 3; /* Garante que fique sobre a calculadora e o histórico */
+
+    border: none;
+    border-radius: 5px;
+
+    box-shadow: 0px 0px 5px 1px #c1ff6f59;
+
+}
+
+.show-history {
+    left: 1225px;
 }

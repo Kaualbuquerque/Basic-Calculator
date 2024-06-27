@@ -6,40 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
-    <title>Calculadora Basica</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Calculadora Básica</title>
 </head>
 
 <body>
-    <main class="calculator-body">
-        <section class="calculator-values">
-        </section>
-        <section class="calculator-screen">
+    <main>
+        <section class="calculator-body">
+            <section class="calculator-values">
+            </section>
+            <section class="calculator-screen">
+            </section>
+
+            <section class="calculator-keyboard">
+                <ul class="keyboard">
+                    <li class="key alt-key">AC</li>
+                    <li class="key alt-key">( )</li>
+                    <li class="key alt-key">%</li>
+                    <li class="key alt-key">/</li>
+                    <li class="key">7</li>
+                    <li class="key">8</li>
+                    <li class="key">9</li>
+                    <li class="key alt-key">X</li>
+                    <li class="key">4</li>
+                    <li class="key">5</li>
+                    <li class="key">6</li>
+                    <li class="key alt-key">-</li>
+                    <li class="key">1</li>
+                    <li class="key">2</li>
+                    <li class="key">3</li>
+                    <li class="key alt-key">+</li>
+                    <li class="key">0</li>
+                    <li class="key">.</li>
+                    <li class="key"><img src="icons/backspace.png" alt="ícone para apagar"></li>
+                    <li class="key equal">=</li>
+                </ul>
+            </section>
         </section>
 
-        <section class="calculator-keyboard">
-            <ul class="keyboard">
-                <li class="key alt-key">AC</li>
-                <li class="key alt-key">( )</li>
-                <li class="key alt-key">%</li>
-                <li class="key alt-key">/</li>
-                <li class="key">7</li>
-                <li class="key">8</li>
-                <li class="key">9</li>
-                <li class="key alt-key">X</li>
-                <li class="key">4</li>
-                <li class="key">5</li>
-                <li class="key">6</li>
-                <li class="key alt-key">-</li>
-                <li class="key">1</li>
-                <li class="key">2</li>
-                <li class="key">3</li>
-                <li class="key alt-key">+</li>
-                <li class="key">0</li>
-                <li class="key">.</li>
-                <li class="key"><img src="icons/backspace.png" alt="icone para apagar"></li>
-                <li class="key equal">=</li>
-            </ul>
+        <button class="toggle-history" ><img src="icons/historical.png" alt=""></button>
+        <section class="history-container">
+            <section class="history">
+                <ul>
+                </ul>
+            </section>
         </section>
+
     </main>
 </body>
 

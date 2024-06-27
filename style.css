@@ -188,10 +188,6 @@ main {
         width: 35%;
     }
 
-    .calculator-values {}
-
-    .calculator-screen {}
-
     .calculator-keyboard .keyboard .key {
         font-size: 1.5vw;
     }

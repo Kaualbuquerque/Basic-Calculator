@@ -1,140 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-
 body {
     margin: 0;
     padding: 0;
-    font-size: 62.5%;
-
+    font-size: 1.6vw;
+    /* Ajuste para font-size responsivo */
     height: 90vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-family: "Roboto";
-
     background-color: #0e0b14de;
-
     user-select: none;
+    overflow-x: hidden;
 }
 
 main {
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-/* Calculator body */
-
+/* Corpo da Calculadora */
 .calculator-body {
     background-color: #525252;
-
     width: 27.5%;
     height: calc(100vh/1.4);
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     gap: 1%;
-
     border-radius: 25px;
-
     box-shadow: 0px 3px 5px -1px #00000067;
     z-index: 2;
-
     transition: 0.5s;
+    position: relative;
 }
 
-/* Calculator Values */
-
+/* Valores da Calculadora */
 .calculator-values {
     color: #bbe487;
-
     width: 90%;
     height: 20%;
-
-    font-size: 1rem;
+    font-size: 1.2vw;
     font-weight: bold;
     text-align: end;
     align-content: center;
 }
 
-/* Calculator Screen */
-
+/* Tela da Calculadora */
 .calculator-screen {
     color: #fff;
-
     width: 90%;
     height: 10%;
-
-    font-size: 3.5rem;
+    font-size: 3.5vw;
+    /* Ajuste para font-size responsivo */
     font-weight: bold;
     text-align: end;
     align-content: center;
-
     overflow-y: hidden;
-
     scrollbar-width: thin;
     scrollbar-color: #b3ec68cb transparent;
 }
 
-/* Calculator Keyboard */
-
+/* Teclado da Calculadora */
 .calculator-keyboard {
     background-color: #363636;
-
     width: 100%;
     height: 70%;
-
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 35px 35px 25px 25px;
-
     box-shadow: 0px -5px 10px -5px #c1ff6f59;
 }
 
 .calculator-keyboard .keyboard {
-
     margin: 0;
     padding: 0;
     color: #c1ff6f;
-
     width: 90%;
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
     gap: 10px;
-
     list-style: none;
-
 }
 
-/* Calculator Keys */
-
+/* Teclas da Calculadora */
 .calculator-keyboard .keyboard .key {
     background-color: #2b2b2b;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 10px;
     padding: 15%;
-
-    font-size: 1.3rem;
+    font-size: 1.3vw;
+    /* Ajuste para font-size responsivo */
     font-weight: bold;
-
     cursor: pointer;
-
     box-shadow: 0px 1px 5px #00000044;
 }
 
@@ -160,32 +126,26 @@ main {
     color: #c1ff6f;
 }
 
-/* Calculator history */
+/* Histórico da Calculadora */
 .history-container {
     background-color: #424242;
     color: #e0e0e0;
-
     position: absolute;
-    top: 20;
-    left: 900px;
-
-    width: 10%; /* Largura do histórico */
-    height: calc(100vh / 1.4); /* Mesma altura que a calculadora */
-
-    border-radius: 0px 25px 25px 0px; /* Adicionando bordas arredondadas */
-
-    font-size: 1rem;
+    top: 0;
+    left: 40%;
+    /* Ajuste conforme necessário */
+    width: 10%;
+    /* Largura do histórico */
+    height: 100%;
+    border-radius: 0px 25px 25px 0px;
+    font-size: 1vw;
+    /* Ajuste para font-size responsivo */
     font-weight: bold;
-
-    overflow-y: scroll; /* Adiciona scroll vertical */
-    scrollbar-width: thin; /* Espessura da barra de rolagem */
-    scrollbar-color: #b3ec68cb transparent; /* Cor da barra de rolagem */
-    
-    padding-left: 30px; /* Espaçamento interno à esquerda */
-    margin-left: -1%; /* Ajuste para posicionar mais à esquerda */
-
-    z-index: 1; /* Garante que fique sobre a calculadora */
-
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #b3ec68cb transparent;
+    padding-left: 2%;
+    z-index: 1;
     transition: 0.5s;
 }
 
@@ -196,27 +156,152 @@ main {
 }
 
 .history li {
-    margin-bottom: 10px; /* Espaçamento entre os itens da lista */
+    margin-bottom: 10px;
 }
 
-/* Estilos para o botão de toggle */
+/* Botão para alternar o histórico */
 .toggle-history {
     background-color: #252525;
-
-    position: fixed;
-    top: 50px;
+    position: absolute;
+    top: 10px;
     left: 20px;
+    /* Ajuste conforme necessário */
     cursor: pointer;
-
-    z-index: 3; /* Garante que fique sobre a calculadora e o histórico */
-
+    z-index: 3;
     border: none;
     border-radius: 5px;
-
     box-shadow: 0px 0px 5px 1px #c1ff6f59;
-
 }
 
 .show-history {
-    left: 1225px;
+    left: 62.5%;
+}
+
+
+@media screen and (max-width: 1440px) {
+    main {
+        height: 55vh;
+    }
+
+    .calculator-body {
+        height: 55vh;
+        width: 35%;
+    }
+
+    .calculator-values {}
+
+    .calculator-screen {}
+
+    .calculator-keyboard .keyboard .key {
+        font-size: 1.5vw;
+    }
+
+    .show-history {
+        left: 66%;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    main {
+        height: 50vh;
+    }
+
+    .calculator-body {
+        height: 50vh;
+    }
+
+    .calculator-keyboard .keyboard .key {
+        font-size: 1.5vw;
+    }
+
+    .history-container {
+        padding-left: 2.5%;
+        font-size: 1.2vw;
+    }
+
+    .show-history {
+        left: 66%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        height: 80vh;
+    }
+
+    .calculator-body {
+        height: 80vh;
+        width: 70%;
+    }
+
+    .calculator-keyboard .keyboard .key {
+        font-size: 3vw;
+    }
+
+    .history-container {
+        padding-left: 2.5%;
+        font-size: 2vw;
+        width: 30%;
+
+        top: 0;
+        left: -35%;
+
+        z-index: 2;
+    }
+
+    .toggle-history{
+        top: 102.5%;
+        left: 25%;
+        right: 25%;
+    }
+
+    .show-history {
+        left: 0%;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+    main {
+        height: 80vh;
+    }
+
+    .calculator-body {
+        height: 80vh;
+        width: 100%;
+    }
+
+    .calculator-keyboard .keyboard{
+        width: 95%;
+
+        gap: 25px 10px;
+    }
+
+    .calculator-keyboard .keyboard .key {
+        font-size: 5vw;
+
+        padding: 20%;
+    }
+
+    .history-container {
+        padding-left: 2.5%;
+        font-size: 3.5vw;
+        width: 50%;
+
+        top: 0;
+        left: -55%;
+
+        z-index: 2;
+    }
+
+    .toggle-history{
+        top: 102.5%;
+        left: 25%;
+        right: 25%;
+    }
+
+    .show-history {
+        left: 0%;
+    }
 }

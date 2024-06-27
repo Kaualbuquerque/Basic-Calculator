@@ -1,91 +1,120 @@
-function roundTo(num, places) {
-    const factor = Math.pow(10, places);
-    return Math.round(num * factor) / factor;
+function add(a, b) {
+    return a + b;
 }
 
-function saveExpression(expression) {
-    let expressions = JSON.parse(localStorage.getItem("expressions")) || [];
-    expressions.push(expression);
-    localStorage.setItem("expressions", JSON.stringify(expressions));
+function subtract(a, b) {
+    return a - b;
 }
 
-function loadExpressions() {
-    let expressions = JSON.parse(localStorage.getItem("expressions")) || [];
-    return expressions;
+function divide(a, b) {
+    if (b === 0) {
+        alert("Divisão por zero não é permitida");
+        return null;
+    }
+    return a / b;
+}
+
+function multiply(a, b) {
+    return a * b;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     let keys = document.querySelectorAll(".key");
     let screen = document.querySelector(".calculator-screen");
     let values = document.querySelector(".calculator-values");
+    let historyContainer = document.querySelector(".history-container");
+    let history = document.querySelector(".history");
+    let toggleHistoryButton = document.querySelector(".toggle-history");
 
-    let openParentheses = 0;
-    let expression = "";
+    let operation;
+    let firstValue;
+    let secondValue;
 
-    // Carregar expressões salvas ao iniciar a aplicação
-    let savedExpressions = loadExpressions();
-    console.log("Expressões carregadas:", savedExpressions);
+    // Carregar histórico do localStorage
+    loadHistory();
 
     keys.forEach(key => {
         key.addEventListener("click", () => {
             if (key.innerHTML === "AC") {
                 screen.innerHTML = "";
                 values.innerHTML = "";
-                expression = "";
-                openParentheses = 0;
-            } else if (key.innerHTML === "( )") {
-                if (openParentheses == 0) {
-                    values.innerHTML += "(";
-                    expression += "(";
-                    screen.innerHTML = "";
-                    openParentheses++;
-                } else if (openParentheses > 0) {
-                    values.innerHTML += screen.innerHTML + ")";
-                    expression += screen.innerHTML + ")";
-                    screen.innerHTML = "";
-                    openParentheses--;
-                }
+                firstValue = null;
+                secondValue = null;
+                operation = null;
             } else if (key.innerHTML === "%") {
-                let currentValue = Number(screen.innerHTML);
-                screen.innerHTML = (currentValue / 100).toString();
-                values.innerHTML += `${currentValue}%`;
-                expression += (currentValue / 100).toString();
+                firstValue = Number(screen.innerHTML);
+                operation = "%";
+                values.innerHTML = `${firstValue.toString()}${operation}`;
+                screen.innerHTML = (firstValue / 100).toString();
             } else if (key.querySelector("img")) {
-                let newValue = screen.innerHTML;
-                screen.innerHTML = newValue.slice(0, -1);
-                values.innerHTML = values.innerHTML.slice(0, -1);
-                expression = expression.slice(0, -1);
+                screen.innerHTML = screen.innerHTML.slice(0, -1);
             } else if (key.innerHTML === "+" || key.innerHTML === "-" || key.innerHTML === "X" || key.innerHTML === "/") {
-                if (/[+\-*/]$/.test(expression)) {
-                    // Substitui o último operador pela nova operação
-                    expression = expression.slice(0, -1) + (key.innerHTML === "X" ? "*" : key.innerHTML);
-                    values.innerHTML = values.innerHTML.slice(0, -2) + ` ${key.innerHTML === "X" ? "*" : key.innerHTML} `;
-                } else {
-                    values.innerHTML += `${screen.innerHTML} ${key.innerHTML === "X" ? "*" : key.innerHTML} `;
-                    expression += `${screen.innerHTML} ${key.innerHTML === "X" ? "*" : key.innerHTML} `;
-                }
+                if (screen.innerHTML === "") return;
+                firstValue = Number(screen.innerHTML);
+                operation = key.innerHTML === "X" ? "*" : key.innerHTML;
+                values.innerHTML = `${firstValue.toString()} ${key.innerHTML}`;
                 screen.innerHTML = "";
             } else if (key.innerHTML === "=") {
-                try {
-                    values.innerHTML += screen.innerHTML;
-                    expression += screen.innerHTML;
-                    let sanitizedExpression = expression.replace(/[^-()\d/*+.]/g, ''); // Sanitize input
-                    let result = eval(sanitizedExpression);
-                    screen.innerHTML = roundTo(result, 10).toString();
-                    values.innerHTML = ""; // Clear the values screen after displaying result
-                    saveExpression(expression); // Salvar a expressão
-                    expression = screen.innerHTML; // Iniciar nova expressão com resultado
-                    openParentheses = 0;
-                } catch (error) {
+                if (firstValue === null || operation === null) {
                     alert("Operação inválida");
-                    screen.innerHTML = "";
-                    values.innerHTML = "";
-                    expression = "";
-                    openParentheses = 0;
+                } else {
+                    secondValue = Number(screen.innerHTML);
+                    let result;
+                    switch (operation) {
+                        case "+":
+                            result = add(firstValue, secondValue);
+                            break;
+                        case "-":
+                            result = subtract(firstValue, secondValue);
+                            break;
+                        case "*":
+                            result = multiply(firstValue, secondValue);
+                            break;
+                        case "/":
+                            result = divide(firstValue, secondValue);
+                            if (result === null) return;
+                            break;
+                    }
+                    screen.innerHTML = result.toString();
+                    values.innerHTML += ` ${secondValue} = ${result}`;
+
+                    // Salvar no localStorage
+                    saveHistory(`${values.innerHTML}`);
+
+                    firstValue = null;
+                    secondValue = null;
+                    operation = null;
                 }
             } else {
+                if (screen.innerHTML.includes(".") && key.innerHTML === ".") return;
+                if (screen.innerHTML === "0" && key.innerHTML === "0") return;
                 screen.innerHTML += key.innerHTML;
             }
         });
     });
+
+    // Toggle para mostrar/ocultar o histórico
+    toggleHistoryButton.addEventListener("click", () => {
+        historyContainer.classList.toggle("show-history");
+    });
+
+    function saveHistory(expression) {
+        let historyArray = JSON.parse(localStorage.getItem("calculatorHistory")) || [];
+        historyArray.push(expression);
+        localStorage.setItem("calculatorHistory", JSON.stringify(historyArray));
+        addHistoryItem(expression);
+    }
+
+    function loadHistory() {
+        let historyArray = JSON.parse(localStorage.getItem("calculatorHistory")) || [];
+        historyArray.forEach(expression => {
+            addHistoryItem(expression);
+        });
+    }
+
+    function addHistoryItem(expression) {
+        let li = document.createElement("li");
+        li.textContent = expression;
+        history.appendChild(li);
+    }
 });

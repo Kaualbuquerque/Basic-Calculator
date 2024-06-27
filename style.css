@@ -260,22 +260,31 @@ main {
 
 @media screen and (max-width: 425px) {
     main {
-        height: 80vh;
+        height: 90vh;
     }
 
     .calculator-body {
-        height: 80vh;
+        height: 90vh;
         width: 100%;
+        border-radius: 0px 0px 25px 25px;
+    }
+
+    .calculator-screen{
+        font-size: 15vw;
+    }
+
+    .calculator-values{
+        font-size: 5vw;
     }
 
     .calculator-keyboard .keyboard{
         width: 95%;
 
-        gap: 25px 10px;
+        gap: 10px;
     }
 
     .calculator-keyboard .keyboard .key {
-        font-size: 5vw;
+        font-size: 5.5vw;
 
         padding: 20%;
     }

@@ -118,7 +118,10 @@ main {
 
 .calculator-body .keyboard .equal {
     background-color: #9ff036;
+    grid-column: 2 span ;
     color: #0f0f0f;
+
+    padding: 10px;
 }
 
 .calculator-body .keyboard .equal:hover {
@@ -180,12 +183,18 @@ main {
 
 @media screen and (max-width: 1440px) {
     main {
-        height: 55vh;
+        height: 65vh;
     }
 
     .calculator-body {
-        height: 55vh;
+        height: 65vh;
         width: 35%;
+    }
+
+    .calculator-keyboard .keyboard{
+        width: 95%;
+
+        gap: 20px 10px;
     }
 
     .calculator-keyboard .keyboard .key {
@@ -200,11 +209,17 @@ main {
 
 @media screen and (max-width: 1024px) {
     main {
-        height: 50vh;
+        height: 60vh;
     }
 
     .calculator-body {
-        height: 50vh;
+        height: 60vh;
+    }
+
+    .calculator-keyboard .keyboard{
+        width: 95%;
+
+        gap: 10px 5px;
     }
 
     .calculator-keyboard .keyboard .key {
@@ -228,7 +243,15 @@ main {
 
     .calculator-body {
         height: 80vh;
-        width: 70%;
+        width: 65%;
+    }
+
+    .calculator-screen{
+        font-size: 6vw;
+    }
+
+    .calculator-values{
+        font-size: 2vw;
     }
 
     .calculator-keyboard .keyboard .key {
@@ -287,6 +310,14 @@ main {
         font-size: 5.5vw;
 
         padding: 20%;
+    }
+
+    .calculator-body .keyboard .equal {
+        background-color: #9ff036;
+        grid-column: 2 span ;
+        color: #0f0f0f;
+    
+        padding: 5px;
     }
 
     .history-container {

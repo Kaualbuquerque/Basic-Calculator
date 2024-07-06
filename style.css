@@ -209,11 +209,11 @@ main {
 
 @media screen and (max-width: 1024px) {
     main {
-        height: 60vh;
+        height: 70vh;
     }
 
     .calculator-body {
-        height: 60vh;
+        height: 70vh;
     }
 
     .calculator-keyboard .keyboard{
